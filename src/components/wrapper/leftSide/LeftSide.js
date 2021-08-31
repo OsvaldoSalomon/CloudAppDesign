@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SideWrapper from "./leftSide/SideWrapper";
+import SideWrapper from "./SideWrapper";
 import './LeftSide.css';
 
 class LeftSide extends Component {
