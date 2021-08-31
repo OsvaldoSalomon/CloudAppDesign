@@ -10,6 +10,7 @@ function App() {
             <div className="app">
                 <Header/>
                 <Wrapper/>
+                <div className="overlay-app"/>
             </div>
         </div>
 
