@@ -1,25 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './AdobeProducts.css'
 
 function AdobeProducts() {
-
-    const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach((dropdown) => {
-        dropdown.addEventListener("click", (e) => {
-            e.preventDefault();
-            dropdowns.forEach((c) => c.classList.remove("is-active"));
-            dropdown.classList.add("is-active");
-        });
-    });
-
     const [isActive, setIsActive] = useState(false);
+    const menuRef = useRef("menu");
 
-    function handleDropdown(event) {
-        event.preventDefault();
-        setIsActive(true);
+    function handleDropdown() {
+        setIsActive(!isActive);
     }
 
+    useEffect(() => {
+        const checkIfClickedOutside = e => {
+            if (isActive && menuRef.current && !menuRef.current.contains(e.target)) {
+                setIsActive(false)
+            }
+        }
+        document.addEventListener("mousedown", checkIfClickedOutside)
+        return () => {
+            document.removeEventListener("mousedown", checkIfClickedOutside)
+        }
+    }, [isActive])
+
     let className = isActive ? 'dropdown is-active' : 'dropdown';
+
     return (
         <li className="adobe-product">
             <div className="products">
@@ -41,7 +44,7 @@ function AdobeProducts() {
                         </span>
             <div className="button-wrapper">
                 <button className="content-button status-button open">Open</button>
-                <div className="menu">
+                <div className="menu" ref={menuRef}>
                     <button onClick={handleDropdown} className={className}>
                         <ul>
                             <li><a href="#">Go to Discover</a></li>
