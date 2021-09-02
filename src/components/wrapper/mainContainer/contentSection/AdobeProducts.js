@@ -10,7 +10,7 @@ function AdobeProducts() {
     }
 
     useEffect(() => {
-        const checkIfClickedOutside = e => {
+        function checkIfClickedOutside(e) {
             if (isActive && menuRef.current && !menuRef.current.contains(e.target)) {
                 setIsActive(false)
             }

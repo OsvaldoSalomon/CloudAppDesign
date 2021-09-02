@@ -1,19 +1,31 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
+import MainHeaderLink from "./MainHeaderLink";
 import './MainHeader.css';
 
-class MainHeader extends Component {
-    render() {
-        return (
-            <div className="main-header">
-                <a className="menu-link-main" href="#">All Apps</a>
-                <div className="header-menu">
-                    <a className="main-header-link is-active" href="#">Desktop</a>
-                    <a className="main-header-link" href="#">Mobile</a>
-                    <a className="main-header-link" href="#">Web</a>
-                </div>
+function MainHeader() {
+    const [items] = useState(() => [
+    {id: 1, name: "Desktop"},
+    {id: 2, name: "Mobile"},
+    {id: 3, name: "App"}
+]);
+
+const [selectedIndex, setSelectedIndex] = useState(0);
+
+    return (
+        <div className="main-header">
+            <a className="menu-link-main" href="#">All Apps</a>
+            <div className="header-menu">
+                {items.map((item, index) => (
+                    <MainHeaderLink
+                        key={item.id}
+                        item={item}
+                        onClick={() => setSelectedIndex(index)}
+                        selected={index === selectedIndex}
+                    />
+                ))}
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default MainHeader;

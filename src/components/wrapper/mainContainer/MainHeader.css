@@ -16,6 +16,11 @@
     }
 }
 
+.header-menu a.is-active, .header-menu a:hover {
+    color: var(--theme-color);
+    border-bottom: 2px solid var(--theme-color);
+}
+
 .main-header .header-menu a {
     padding: 20px 24px;
 }
