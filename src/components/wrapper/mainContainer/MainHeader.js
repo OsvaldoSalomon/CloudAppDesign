@@ -4,12 +4,12 @@ import './MainHeader.css';
 
 function MainHeader() {
     const [items] = useState(() => [
-    {id: 1, name: "Desktop"},
-    {id: 2, name: "Mobile"},
-    {id: 3, name: "App"}
-]);
+        {id: 1, name: "Desktop"},
+        {id: 2, name: "Mobile"},
+        {id: 3, name: "App"}
+    ]);
 
-const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     return (
         <div className="main-header">

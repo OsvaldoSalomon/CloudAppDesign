@@ -29,7 +29,7 @@
     background-color: var(--hover-menu-bg);
 }
 
-.side-menu svg {
+.side-menu i {
     width: 16px;
     margin-right: 8px;
 }
